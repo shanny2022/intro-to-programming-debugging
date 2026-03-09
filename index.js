@@ -1,3 +1,5 @@
+// Cache the key elements the game updates after each guess.
+const guessForm = document.getElementById('guess-form');
 const guessInput = document.getElementById('guess');
 const submitButton = document.getElementById('submit');
 const resetButton = document.getElementById('reset');
@@ -48,7 +50,9 @@ function setup() {
 }
 
 // Checks the player's guess and updates the visible game messages.
-function checkGuess() {
+function checkGuess(event) {
+  event.preventDefault();
+
   const guess = parseInt(guessInput.value, 10);
 
   if (!Number.isInteger(guess) || guess < 1 || guess > 99) {
@@ -87,7 +91,7 @@ function checkGuess() {
   resetButton.style.display = '';
 }
 
-submitButton.addEventListener('click', checkGuess);
+guessForm.addEventListener('submit', checkGuess);
 resetButton.addEventListener('click', setup);
 
 setup();
