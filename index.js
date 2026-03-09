@@ -55,7 +55,7 @@ function checkGuess() {
     hideAllMessages();
     numberOfGuessesMessage.style.display = '';
     numberOfGuessesMessage.innerHTML = 'Enter a number from 1 to 99.';
-    resetButton.style.display = 'none';
+    resetButton.style.display = attempts > 0 ? '' : 'none';
     return;
   }
 
